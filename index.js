@@ -2,6 +2,7 @@ console.log("Beep beep i'm a sheep!");
 
 require("dotenv").config();
 const https = require("https");
+const http = require('http');
 
 const Discord = require("discord.js");
 const client = new Discord.Client();
@@ -59,3 +60,8 @@ client.on("message", msg => {
 });
 
 
+
+ http.createServer(function (request, response) {
+    response.writeHead(200, { 'Content-Type': 'text/html' });
+    response.end("<h1>Ciao</h1>", 'utf-8');
+ }).listen(process.env.PORT||5000);
